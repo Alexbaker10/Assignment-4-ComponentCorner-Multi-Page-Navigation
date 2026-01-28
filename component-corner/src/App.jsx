@@ -14,10 +14,6 @@ function App() {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  useEffect(() => {
-    localStorage.setItem('shoppingCart', JSON.stringify(cart));
-  }, [cart]);
-
   const products = [
     {
       id: 1,
@@ -61,5 +57,30 @@ function App() {
       description: "The classic rotary dial phone that would befound in every home in its time",
       image: "data:image/jpeg;base64,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"
     }
-  ]};
-  export default App;
+  ];
+
+  const handleAddToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
+  const handleRemoveFromCart = (productId) => {
+    setCart(cart.filter((item) => item.id !== productId));
+  };
+
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Header cartCount={cart.length} />
+        <Routes>
+          <Route path="/" element={<HomePage products={products} />} />
+          <Route path="/products" element={<ProductsPage products={products} onAddToCart={handleAddToCart} />} />
+          <Route path="/cart" element={<CartPage cart={cart} onRemoveFromCart={handleRemoveFromCart} />} />
+          <Route path="/product/:id" element={<ProductDetailsPage products={products} onAddToCart={handleAddToCart} />} />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
