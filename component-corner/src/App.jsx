@@ -70,12 +70,21 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header cartCount={cart.length} />
+        <Header storeName="ComponentCorner" cartCount={cart.length} />
         <Routes>
-          <Route path="/" element={<HomePage products={products} />} />
-          <Route path="/products" element={<ProductsPage products={products} onAddToCart={handleAddToCart} />} />
-          <Route path="/cart" element={<CartPage cart={cart} onRemoveFromCart={handleRemoveFromCart} />} />
-          <Route path="/product/:id" element={<ProductDetailsPage products={products} onAddToCart={handleAddToCart} />} />
+          <Route path="/" element={<HomePage />} />
+          <Route 
+            path="/products" 
+            element={<ProductsPage products={products} addToCart={handleAddToCart} />} 
+          />
+          <Route 
+            path="/cart" 
+            element={<CartPage cart={cart} removeFromCart={handleRemoveFromCart} />} 
+          />
+          <Route 
+            path="/product/:id" 
+            element={<ProductDetailsPage products={products} addToCart={handleAddToCart} />} 
+          />
         </Routes>
         <Footer />
       </div>
